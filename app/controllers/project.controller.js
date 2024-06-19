@@ -11,10 +11,12 @@ exports.create = (req, res) => {
 
   // Create a Tutorial
   const project = new Project({
-    tecnico: req.body.tecnico,
+    cliente: req.body.cliente,
+    tecnico_recepcion: req.body.tecnico_recepcion,
     chasis: req.body.chasis,
-    componente1: req.body.componente1,
-    activo: req.body.activo || false
+    componente1_recepcion: req.body.componente1_recepcion,
+    //activo: req.body.activo || false
+    estado: req.body.estado || false
   });
 
   // Save Tutorial in the database
@@ -30,9 +32,9 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database (with condition).
 exports.findAll = (req, res) => {
-  const tecnico = req.query.tecnico;
+  const tecnico_recepcion = req.query.tecnico_recepcion;
 
-  Project.getAll(tecnico, (err, data) => {
+  Project.getAll(tecnico_recepcion, (err, data) => {
     if (err)
       res.status(500).send({
         message:

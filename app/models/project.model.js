@@ -2,10 +2,11 @@ const sql = require("./db.js");
 
 // constructor
 const Project = function(project) {
-  this.tecnico = project.tecnico;
+  this.cliente = project.cliente;
+  this.tecnico_recepcion = project.tecnico_recepcion;
   this.chasis = project.chasis;
-  this.componente1 = project.componente1;
-  this.activo = project.activo;
+  this.componente1_recepcion = project.componente1_recepcion;
+  this.estado = project.estado;
 };
 
 Project.create = (newProject, result) => {
@@ -40,11 +41,11 @@ Project.findById = (id, result) => {
   });
 };
 
-Project.getAll = (tecnico, result) => {
-  let query = "SELECT * FROM project";
+Project.getAll = (tecnico_recepcion, result) => {
+  let query = "SELECT * FROM project order by id desc";
 
-  if (tecnico) {
-    query += ` WHERE tecnico LIKE '%${tecnico}%'`;
+  if (tecnico_recepcion) {
+    query += ` WHERE tecnico LIKE '%${tecnico_recepcion}%'`;
   }
 
   sql.query(query, (err, res) => {
