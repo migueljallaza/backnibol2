@@ -13,6 +13,7 @@ exports.create = (req, res) => {
   const project = new Project({
     tecnico: req.body.tecnico,
     chasis: req.body.chasis,
+    componente1: req.body.componente1,
     activo: req.body.activo || false
   });
 

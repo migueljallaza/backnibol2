@@ -4,6 +4,7 @@ const sql = require("./db.js");
 const Project = function(project) {
   this.tecnico = project.tecnico;
   this.chasis = project.chasis;
+  this.componente1 = project.componente1;
   this.activo = project.activo;
 };
 
