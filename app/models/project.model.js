@@ -45,7 +45,7 @@ Project.getAll = (tecnico_recepcion, result) => {
   let query = "SELECT * FROM project order by id desc";
 
   if (tecnico_recepcion) {
-    query += ` WHERE tecnico LIKE '%${tecnico_recepcion}%'`;
+    query += ` WHERE tecnico_recepcion LIKE '%${tecnico_recepcion}%'`;
   }
 
   sql.query(query, (err, res) => {
@@ -73,10 +73,10 @@ Project.getAllPublished = result => {
   });
 };
 
-Project.updateById = (id, tutorial, result) => {
+Project.updateById = (id, project, result) => {
   sql.query(
-    "UPDATE project SET tecnico = ?, chasis = ?, activo = ? WHERE id = ?",
-    [project.tecnico, project.chasis, project.activo, id],
+    "UPDATE project SET cliente = ?, tecnico_recepcion = ?, chasis = ? WHERE id = ?",
+    [project.cliente, project.tecnico_recepcion, project.chasis, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -90,8 +90,8 @@ Project.updateById = (id, tutorial, result) => {
         return;
       }
 
-      console.log("updated project: ", { id: id, ...tutorial });
-      result(null, { id: id, ...tutorial });
+      console.log("updated project: ", { id: id, ...project });
+      result(null, { id: id, ...project });
     }
   );
 };
