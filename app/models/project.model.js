@@ -3,9 +3,14 @@ const sql = require("./db.js");
 // constructor
 const Project = function(project) {
   this.cliente = project.cliente;
+  this.fecha_control_recepcion = project.fecha_control_recepcion;
   this.tecnico_recepcion = project.tecnico_recepcion;
   this.chasis = project.chasis;
   this.componente1_recepcion = project.componente1_recepcion;
+  this.componente2_recepcion = project.componente2_recepcion;
+  this.componente3_recepcion = project.componente3_recepcion;
+  this.componente4_recepcion = project.componente4_recepcion;
+  this.componente5_recepcion = project.componente5_recepcion;
   this.estado = project.estado;
 };
 
@@ -75,8 +80,8 @@ Project.getAllPublished = result => {
 
 Project.updateById = (id, project, result) => {
   sql.query(
-    "UPDATE project SET cliente = ?, tecnico_recepcion = ?, chasis = ? WHERE id = ?",
-    [project.cliente, project.tecnico_recepcion, project.chasis, id],
+    "UPDATE project SET cliente = ?, fecha_control_recepcion = ?, tecnico_recepcion = ?, chasis = ?, componente1_recepcion = ?, componente2_recepcion = ?, componente3_recepcion = ?, componente4_recepcion = ?, componente5_recepcion = ? WHERE id = ?",
+    [project.cliente, project.fecha_control_recepcion,project.tecnico_recepcion, project.chasis, project.componente1_recepcion, project.componente2_recepcion, project.componente3_recepcion, project.componente4_recepcion, project.componente5_recepcion, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);

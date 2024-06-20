@@ -12,9 +12,14 @@ exports.create = (req, res) => {
   // Create a Tutorial
   const project = new Project({
     cliente: req.body.cliente,
+    fecha_control_recepcion: req.body.fecha_control_recepcion,
     tecnico_recepcion: req.body.tecnico_recepcion,
     chasis: req.body.chasis,
     componente1_recepcion: req.body.componente1_recepcion,
+    componente2_recepcion: req.body.componente2_recepcion,
+    componente3_recepcion: req.body.componente3_recepcion,
+    componente4_recepcion: req.body.componente4_recepcion,
+    componente5_recepcion: req.body.componente5_recepcion,
     //activo: req.body.activo || false
     estado: req.body.estado || false
   });
