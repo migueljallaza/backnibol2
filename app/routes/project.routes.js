@@ -14,6 +14,8 @@ module.exports = app => {
   
     // Retrieve a single Tutorial with id
     router.get("/:id", project.findOne);
+
+    router.put("/:id", project.edit);
   
     // Update a Tutorial with id
     router.put("/:id", project.update);

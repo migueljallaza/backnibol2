@@ -21,7 +21,7 @@ exports.create = (req, res) => {
     componente4_recepcion: req.body.componente4_recepcion,
     componente5_recepcion: req.body.componente5_recepcion,
     //activo: req.body.activo || false
-    estado: req.body.estado || false
+    estado: req.body.estado
   });
 
   // Save Tutorial in the database
@@ -76,6 +76,36 @@ exports.findAllPublished = (req, res) => {
       });
     else res.send(data);
   });
+};
+
+// Update a Tutorial identified by the id in the request
+exports.edit = (req, res) => {
+  // Validate Request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+
+  console.log(req.body);
+
+  Project.editById(
+    req.params.id,
+    new Project(req.body),
+    (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Project with id ${req.params.id}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Error updating Project with id " + req.params.id
+          });
+        }
+      } else res.send(data);
+    }
+  );
 };
 
 // Update a Tutorial identified by the id in the request
