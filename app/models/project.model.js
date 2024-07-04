@@ -101,11 +101,11 @@ Project.findById = (id, result) => {
   });
 };
 
-Project.getAll = (tecnico_recepcion, result) => {
+Project.getAll = (cliente, result) => {
   let query = "SELECT * FROM project order by id desc";
 
-  if (tecnico_recepcion) {
-    query += ` WHERE tecnico_recepcion LIKE '%${tecnico_recepcion}%'`;
+  if (cliente) {
+    query = ` SELECT * FROM project WHERE cliente LIKE '%${cliente}%' or chasis LIKE '%${cliente}%' `;
   }
 
   sql.query(query, (err, res) => {

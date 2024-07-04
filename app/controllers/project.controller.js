@@ -65,9 +65,9 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database (with condition).
 exports.findAll = (req, res) => {
-  const tecnico_recepcion = req.query.tecnico_recepcion;
+  const cliente = req.query.cliente;
 
-  Project.getAll(tecnico_recepcion, (err, data) => {
+  Project.getAll(cliente, (err, data) => {
     if (err)
       res.status(500).send({
         message:
